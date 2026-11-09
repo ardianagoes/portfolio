@@ -31,4 +31,5 @@ use the editor.
 
 ## Portfolio presentation
 - Keep homepage presentation in the index route and reusable portfolio components; preserve content in the separate data module so visual refinements do not alter project facts.
-- Keep decorative landscapes separate from project data and import generated artwork as bundled assets so imagery remains reliable without external image hosts.
+- Keep symbolic project visuals in the replaceable ProjectVisual component, separate from project facts, so authentic media can replace them without changing content.
+- Keep the contact form presentational until a delivery adapter is explicitly configured; validate with the shared schema and require an acceptance receipt before success, so UI never simulates delivery. Future server handlers must independently validate the same schema.

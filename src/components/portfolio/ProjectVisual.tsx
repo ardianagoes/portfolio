@@ -1,20 +1,48 @@
 import type { Project } from "./data";
 
-/** Quiet landscape study per project; decorative only. */
+/** Symbolic subject studies, not screenshots or hardware specifications. */
 export function ProjectVisual({ kind }: { kind: Project["kind"] }) {
-  const paths: Record<Project["kind"], string> = {
-    sensor: "M0 150 C70 116 104 136 151 112 S245 72 304 101 S365 128 400 112 V220 H0 Z",
-    app: "M0 162 C55 148 85 92 145 103 S235 159 289 126 S350 82 400 99 V220 H0 Z",
-    calendar: "M0 132 C64 126 87 151 140 139 S220 91 279 112 S354 151 400 136 V220 H0 Z",
-    sat: "M0 168 C80 151 112 121 169 128 S248 168 305 145 S358 114 400 120 V220 H0 Z",
-    robot: "M0 143 C56 111 109 112 151 137 S235 172 284 136 S354 92 400 108 V220 H0 Z",
+  const labels: Record<Project["kind"], [string, string]> = {
+    sensor: ["O₂ / NYC", "Environmental monitoring"],
+    app: ["FURNEY", "Space / perspective"],
+    calendar: ["DEADLINE DESK", "Time / priorities"],
+    sat: ["FLATSAT", "Motion → capture"],
+    robot: ["FIRST ROBOTICS", "Hardware ↔ software"],
   };
   return (
-    <svg viewBox="0 0 400 220" className="h-full w-full" fill="none" aria-hidden>
-      <path d={paths[kind]} className="fill-primary/10" />
-      <path d={paths[kind]} className="stroke-primary/25" strokeWidth="1" />
-      <path d="M38 177 C100 165 151 181 213 168 S322 171 370 160" className="stroke-signal/20" />
-      <path d="M72 192 C133 184 177 198 238 187 S319 190 351 184" className="stroke-signal/15" />
+    <svg viewBox="0 0 400 225" className="h-full w-full text-primary" fill="none" aria-hidden="true">
+      <text x="24" y="31" className="fill-current font-mono text-[11px]">{labels[kind][0]}</text>
+      <path d="M24 43H376" className="stroke-current opacity-25" />
+      <g stroke="currentColor" strokeWidth="1.5">
+        {kind === "sensor" && <>
+          <circle cx="200" cy="118" r="26" /><circle cx="200" cy="118" r="4" className="fill-current" />
+          <path d="M158 89a51 51 0 0 0 0 58M242 89a51 51 0 0 1 0 58M145 78a69 69 0 0 0 0 80M255 78a69 69 0 0 1 0 80" className="opacity-40" />
+          <path d="M200 144v22m-20 0h40" />
+        </>}
+        {kind === "app" && <>
+          <path d="m132 96 67-29 70 29v59l-70 31-67-31Zm0 0 67 30 70-30m-70 30v60" className="opacity-60" />
+          <path d="m158 130 38-17 45 20-39 17Zm0 0v17l44 20 39-17v-17m-39 17v17" />
+        </>}
+        {kind === "calendar" && <>
+          <path d="M113 79h174M113 111h174M113 143h174M113 175h174" className="opacity-25" />
+          <rect x="113" y="90" width="10" height="10" rx="2" /><path d="M141 95h90m-90 32h121m-121 32h62" />
+          <path d="m113 125 4 4 9-10m-13 38 4 4 9-10" />
+          <circle cx="277" cy="95" r="4" className="fill-current" />
+        </>}
+        {kind === "sat" && <>
+          <rect x="147" y="84" width="110" height="76" rx="4" /><circle cx="202" cy="122" r="24" /><circle cx="202" cy="122" r="12" className="opacity-40" />
+          <path d="M129 96h-16v52h16m146-52h16v52h-16M181 72V61h42v11" className="opacity-50" />
+          <path d="m302 115 7 7-7 7m-1-7h-23" />
+        </>}
+        {kind === "robot" && <>
+          <path d="M144 159h108l-8-18h-92Zm32-18 14-44 37 19 18-33m-55 14-20-21" />
+          <circle cx="190" cy="97" r="7" className="fill-surface" /><circle cx="227" cy="116" r="6" className="fill-surface" />
+          <circle cx="162" cy="169" r="10" /><circle cx="234" cy="169" r="10" />
+          <path d="m245 83 13 2 5-11m-18 9 1-13 11-5" />
+          <path d="m107 116-9 7 9 7m185-14 9 7-9 7" className="opacity-50" />
+        </>}
+      </g>
+      <text x="24" y="205" className="fill-current font-mono text-[10px] opacity-75">{labels[kind][1]}</text>
     </svg>
   );
 }
