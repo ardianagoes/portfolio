@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Portfolio presentation
+- Keep homepage presentation in the index route and reusable portfolio components; preserve content in the separate data module so visual refinements do not alter project facts.
+- Keep decorative landscapes separate from project data and import generated artwork as bundled assets so imagery remains reliable without external image hosts.
