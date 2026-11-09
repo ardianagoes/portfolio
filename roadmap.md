@@ -1,4 +1,6 @@
-# Homepage refinement
-- [x] Refine headline, introduction, wordmark, exploring interests and About nickname without changing existing project facts.
-- [x] Apply dark forest palette and subdued Indonesian landscape artwork; tighten editorial spacing.
-- [x] Verify desktop/mobile readability and section navigation.
+# Targeted portfolio improvements
+- [ ] Remove hero photography while preserving headline, palette, exploring interests and navigation.
+- [ ] Replace landscape placeholders with distinct symbolic project studies.
+- [ ] Tighten About copy and remove nickname.
+- [ ] Add accessible contact form UI without connecting services or implying delivery.
+- [ ] Verify validation, desktop/mobile layout and navigation.
