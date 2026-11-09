@@ -3,13 +3,13 @@ import { Button } from "@/components/ui/button";
 
 export function Section({ id, label, title, children }: { id: string; label: string; title: string; children: ReactNode }) {
   return (
-    <section id={id} className="scroll-mt-20 py-14 md:py-28">
+    <section id={id} className="scroll-mt-8 border-t border-border/60 py-12 md:py-16">
       <div className="mx-auto max-w-5xl px-6">
-        <div className="mb-12 grid gap-4 md:grid-cols-[180px_1fr]">
+        <div className="mb-8 grid gap-3 md:grid-cols-[140px_1fr]">
           <span className="pt-2 text-sm text-muted-foreground">{label}</span>
           <h2 className="max-w-2xl text-3xl font-normal leading-tight md:text-4xl">{title}</h2>
         </div>
-        <div className="md:pl-[180px]">{children}</div>
+        <div className="md:pl-[140px]">{children}</div>
       </div>
     </section>
   );
@@ -18,7 +18,7 @@ export function Section({ id, label, title, children }: { id: string; label: str
 export function PillLink({ href, children, primary }: { href: string; children: ReactNode; primary?: boolean }) {
   const ext = href.startsWith("http");
   return (
-    <Button asChild variant={primary ? "default" : "link"} className={`min-h-11 rounded-full px-5 shadow-none ${primary ? "" : "text-foreground underline decoration-border underline-offset-4 hover:decoration-primary"}`}>
+    <Button asChild variant={primary ? "default" : "link"} className={`min-h-11 rounded-md px-4 shadow-none transition-none ${primary ? "" : "text-foreground underline decoration-border underline-offset-4 hover:decoration-primary"}`}>
       <a href={href} target={ext ? "_blank" : undefined} rel={ext ? "noreferrer" : undefined}>{children}</a>
     </Button>
   );
