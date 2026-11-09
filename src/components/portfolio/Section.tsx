@@ -5,7 +5,7 @@ export function Section({ id, label, title, children }: { id: string; label: str
   return (
     <section id={id} className="scroll-mt-8 border-t border-border/60 py-12 md:py-16">
       <div className="mx-auto max-w-5xl px-6">
-        <div className="mb-8 grid gap-3 md:grid-cols-[140px_1fr]">
+        <div className="mb-8 grid gap-3 md:grid-cols-[140px_1fr] md:gap-x-0">
           <span className="pt-2 text-sm text-muted-foreground">{label}</span>
           <h2 className="max-w-2xl text-3xl font-normal leading-tight md:text-4xl">{title}</h2>
         </div>
