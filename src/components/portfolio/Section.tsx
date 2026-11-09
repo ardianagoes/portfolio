@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export function Section({ id, label, title, children }: { id: string; label: string; title: string; children: ReactNode }) {
   return (
-    <section id={id} className="scroll-mt-20 py-20 md:py-28">
+    <section id={id} className="scroll-mt-20 py-14 md:py-28">
       <div className="mx-auto max-w-5xl px-6">
         <div className="mb-12 grid gap-4 md:grid-cols-[180px_1fr]">
           <span className="pt-2 text-sm text-muted-foreground">{label}</span>

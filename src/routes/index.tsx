@@ -34,12 +34,12 @@ function Index() {
         </div>
       </header>
 
-      <section id="top" className="relative flex min-h-[680px] items-center overflow-hidden pb-24 pt-32 md:min-h-[720px] md:pb-40">
+      <section id="top" className="relative flex min-h-[640px] items-center overflow-hidden pb-12 pt-28 md:min-h-[720px] md:pb-40 md:pt-32">
         <img src={islandCoast} alt="" width={1920} height={1024} className="hero-landscape absolute inset-0 h-full w-full object-cover" />
         <div className="relative mx-auto w-full max-w-5xl px-6">
           <p className="mb-7 text-sm text-muted-foreground">Electrical Engineering · Brown University</p>
           <h1 className="max-w-3xl text-5xl font-normal leading-[1.08] md:text-7xl">Hello, I’m<br />Ardian Agoes.</h1>
-          <p className="mt-8 max-w-xl text-lg leading-8 text-muted-foreground">
+          <p className="mt-8 max-w-xl text-base leading-7 text-muted-foreground md:text-lg md:leading-8">
             I study electrical engineering and build things where circuits, code, and the physical world meet — sensors, robots, and fast digital systems.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-x-2 gap-y-3">
@@ -48,7 +48,7 @@ function Index() {
             <PillLink href={links.github}><Github className="h-4 w-4" />GitHub</PillLink>
             <PillLink href={links.linkedin}><Linkedin className="h-4 w-4" />LinkedIn</PillLink>
           </div>
-          <p className="mt-16 max-w-xl text-sm leading-7 text-muted-foreground">Currently curious about {interests.join(", ").replace(/, ([^,]*)$/, ", and $1")}.</p>
+          <p className="mt-10 max-w-xl text-sm leading-7 text-muted-foreground md:mt-16">Currently curious about {interests.join(", ").replace(/, ([^,]*)$/, ", and $1")}.</p>
         </div>
       </section>
 
