@@ -15,7 +15,8 @@ export function Section({ id, label, title, children }: { id: string; label: str
   );
 }
 
-export function PillLink({ href, children, primary }: { href: string; children: ReactNode; primary?: boolean }) {
+export function PillLink({ href, children, primary }: { href?: string | undefined; children: ReactNode; primary?: boolean }) {
+  if (!href) return <span className="inline-flex min-h-11 items-center gap-2 px-4 text-sm text-muted-foreground">{children} <span className="text-xs">(pending)</span></span>;
   const ext = href.startsWith("http");
   return (
     <Button asChild variant={primary ? "default" : "link"} className={`min-h-11 rounded-md px-4 shadow-none transition-none ${primary ? "" : "text-foreground underline decoration-border underline-offset-4 hover:decoration-primary"}`}>
