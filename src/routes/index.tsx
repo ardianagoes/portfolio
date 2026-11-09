@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowDown, ArrowUpRight, Github, Linkedin, FileText } from "lucide-react";
 import { experience, interests, links, projects, skills } from "@/components/portfolio/data";
 import { ProjectVisual } from "@/components/portfolio/ProjectVisual";
@@ -36,7 +36,6 @@ function Index() {
 
       <section id="top" className="relative overflow-hidden pb-8 pt-32 md:pb-10 md:pt-40">
         <div className="relative mx-auto w-full max-w-5xl px-6">
-          <div aria-hidden="true" className="absolute right-6 top-1 hidden border-l border-border pl-4 font-mono text-xs leading-6 text-muted-foreground lg:block">01 / FIELD NOTES<br />Circuits ↔ code</div>
           <h1 className="max-w-3xl text-[42px] font-normal leading-[1.12] sm:text-6xl md:text-[68px]">I build things where<br className="hidden sm:block" /> hardware meets<br className="hidden sm:block" /> <em className="text-primary">software.</em></h1>
           <p className="mt-7 max-w-[540px] text-base leading-7 text-muted-foreground md:text-lg md:leading-8">
             <span className="text-foreground">I'm Ardian Agoes,</span> an Electrical Engineering student at Brown University. I enjoy building projects that connect circuits, code, and the physical world.
@@ -59,17 +58,19 @@ function Index() {
       <Section id="projects" label="Selected work" title="Projects I’ve been building">
         <div className="space-y-10">
           {projects.map((p) => (
-            <article key={p.id} className="grid gap-6 border-t border-border pt-7 md:grid-cols-[1fr_1.15fr] md:items-start">
+            <article key={p.id}>
+              <Link to="/projects/$projectId" params={{ projectId: p.id }} aria-label={`View ${p.title} project`} className="group grid gap-6 border-t border-border pt-7 hover:border-primary focus-visible:border-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-4 md:grid-cols-[1fr_1.15fr] md:items-start">
               <div className={`project-art project-art-${p.kind} aspect-[16/9] overflow-hidden rounded-md`}>
                 <ProjectVisual kind={p.kind} />
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">{p.id}</p>
-                <h3 className="mt-2 text-3xl font-normal">{p.title}</h3>
+                <h3 className="mt-2 flex items-start justify-between gap-3 text-3xl font-normal group-hover:text-primary group-focus-visible:text-primary">{p.title}<ArrowUpRight aria-hidden="true" className="mt-2 h-5 w-5 shrink-0 text-primary" /></h3>
                 <p className="mt-2 text-primary">{p.tagline}</p>
                 <p className="mt-5 leading-7 text-muted-foreground">{p.description}</p>
                 <p className="mt-5 text-sm text-muted-foreground">{p.tags.join(" · ")}</p>
               </div>
+              </Link>
             </article>
           ))}
         </div>
@@ -98,7 +99,7 @@ function Index() {
         <div className="grid gap-10 sm:grid-cols-2">
           {skills.map((s) => (
             <div key={s.group} className="border-t border-border pt-5">
-              <h3 className="mb-4 text-sm font-medium text-primary">{s.group}</h3>
+              <h3 className="mb-4 flex flex-wrap items-center justify-between gap-2 text-sm font-medium text-primary">{s.group}{s.confirmation === "pending" && <span className="text-xs font-normal text-muted-foreground">Pending confirmation</span>}</h3>
               <ul className="space-y-2 text-muted-foreground">{s.items.map((i) => <li key={i}>{i}</li>)}</ul>
             </div>
           ))}
@@ -109,16 +110,16 @@ function Index() {
         <ContactForm />
         <div className="mt-8 grid gap-x-8 border-t border-border sm:grid-cols-2">
           {[
-            { icon: Github, label: "GitHub", value: "github.com/…", href: links.github },
-            { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/…", href: links.linkedin },
+            { icon: Github, label: "GitHub", value: "github.com/ardianagoes", href: links.github },
+            { icon: Linkedin, label: "LinkedIn", value: "Profile pending", href: links.linkedin },
           ].map(({ icon: Icon, label, value, href }) => (
-            <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer"
+            <a key={label} href={href} target={href?.startsWith("http") ? "_blank" : undefined} rel={href ? "noreferrer" : undefined} aria-disabled={!href || undefined}
               className="group flex min-h-20 items-center justify-between py-5">
               <div className="flex items-center gap-4">
                 <Icon className="h-5 w-5 text-primary" />
                 <div><p className="text-sm text-muted-foreground">{label}</p><p>{value}</p></div>
               </div>
-              <ArrowUpRight className="h-5 w-5 text-muted-foreground group-hover:text-primary" />
+              {href && <ArrowUpRight aria-hidden="true" className="h-5 w-5 text-muted-foreground group-hover:text-primary" />}
             </a>
           ))}
         </div>

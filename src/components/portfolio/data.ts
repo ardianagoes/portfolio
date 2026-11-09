@@ -1,15 +1,26 @@
-// TODO: replace placeholder URLs with real profiles.
+// Missing destinations stay unavailable until authentic links/files are supplied.
 export const links = {
-  github: "https://github.com/",
-  linkedin: "https://www.linkedin.com/",
+  github: "https://github.com/ardianagoes",
+  linkedin: undefined,
   email: "mailto:ardian_agoes@brown.edu",
   emailLabel: "ardian_agoes@brown.edu",
-  resume: "#",
+  resume: undefined,
 };
 
 export const interests = ["FPGA", "ASIC design", "Semiconductors", "Embedded systems", "Low-latency computing"];
 
-export type Project = { id: string; title: string; tagline: string; description: string; tags: string[]; kind: "sensor" | "app" | "calendar" | "sat" | "robot" };
+export type ProjectDetails = {
+  overview?: string;
+  motivation?: string;
+  contribution?: string;
+  technologies?: string[];
+  challenges?: string;
+  media?: { src: string; alt: string; caption?: string }[];
+  github?: string;
+  demo?: string;
+};
+
+export type Project = { id: string; title: string; tagline: string; description: string; tags: string[]; kind: "sensor" | "app" | "calendar" | "sat" | "robot"; details?: ProjectDetails };
 
 export const projects: Project[] = [
   { id: "01", title: "O2NYC", tagline: "Low-cost air-quality monitoring hardware", description: "Sensor hardware designed to make neighborhood-level air-quality measurement affordable and deployable.", tags: ["Embedded", "Sensors", "PCB"], kind: "sensor" },
@@ -20,15 +31,14 @@ export const projects: Project[] = [
 ];
 
 export const experience = [
-  { org: "Brown Formula Racing", role: "Team Member", period: "Dates TBD", note: "Role and subsystem details to be added." },
-  { org: "Brown OIT", role: "Student Technician", period: "Dates TBD", note: "Responsibilities to be added." },
-  { org: "Mypy Coding", role: "Senior Volunteer Tutor", period: "Dates TBD", note: "Teaching programming fundamentals. Details to be added." },
-  { org: "Research & Interests", role: "Ongoing", period: "—", note: "Digital design, FPGA prototyping, and low-latency systems. Details to be added." },
+  { org: "Brown Formula Racing", role: "Team Member", period: "Fall 2026–Present", note: "Working with the pedal box/throttle subteam." },
+  { org: "Brown OIT", role: "IT Service Center Student Technician", period: "October 2026–Present", note: "Providing technical support." },
+  { org: "Mypy Coding", role: "Senior Volunteer Tutor", period: "July 2024–Present", note: "Teaching programming to younger students." },
 ];
 
 export const skills = [
-  { group: "Hardware", items: ["Circuit design", "PCB layout", "FPGA", "Microcontrollers", "Sensors"] },
-  { group: "Programming", items: ["Verilog / SystemVerilog", "C / C++", "Python", "Java", "TypeScript"] },
-  { group: "Tools", items: ["Vivado", "KiCad", "Git", "Linux", "Raspberry Pi"] },
-  { group: "Engineering Areas", items: ["Digital logic", "Embedded systems", "Control systems", "Signal processing", "Robotics"] },
+  { group: "Hardware", confirmation: "pending", items: ["Circuit design", "PCB layout", "FPGA", "Microcontrollers", "Sensors"] },
+  { group: "Programming", confirmation: "pending", items: ["Verilog / SystemVerilog", "C / C++", "Python", "Java", "TypeScript"] },
+  { group: "Tools", confirmation: "pending", items: ["Vivado", "KiCad", "Git", "Linux", "Raspberry Pi"] },
+  { group: "Engineering Areas", confirmation: "pending", items: ["Digital logic", "Embedded systems", "Control systems", "Signal processing", "Robotics"] },
 ];

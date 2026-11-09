@@ -33,3 +33,4 @@ use the editor.
 - Keep homepage presentation in the index route and reusable portfolio components; preserve content in the separate data module so visual refinements do not alter project facts.
 - Keep symbolic project visuals in the replaceable ProjectVisual component, separate from project facts, so authentic media can replace them without changing content.
 - Keep the contact form presentational until a delivery adapter is explicitly configured; validate with the shared schema and require an acceptance receipt before success, so UI never simulates delivery. Future server handlers must independently validate the same schema.
+- Route project details by stable data IDs through one reusable detail component; render optional sections only when supplied, so incomplete case studies never imply invented contributions or media.
