@@ -34,6 +34,7 @@
   --color-ring: var(--ring);
   --color-surface: var(--surface);
   --color-signal: var(--signal);
+  --color-error: var(--error);
 }
 
 /* Charcoal-green forest, muted foliage and sage. */
@@ -60,6 +61,7 @@
   --border: #405B4D;
   --input: var(--border);
   --ring: var(--primary);
+  --error: oklch(0.8 0.08 30);
 }
 
 @layer base {
@@ -82,20 +84,12 @@
   :focus-visible { outline: 2px solid var(--ring); outline-offset: 4px; }
 }
 
-.hero-landscape { object-position: right bottom; opacity: 0.66; }
-.hero-shade {
-  background: linear-gradient(to right, var(--background) 8%, color-mix(in oklab, var(--background) 94%, transparent) 35%, color-mix(in oklab, var(--background) 24%, transparent) 100%), linear-gradient(to bottom, var(--background) 0%, transparent 30%, var(--background) 98%);
-}
 .exploring-strip { border-color: color-mix(in oklab, var(--primary) 30%, var(--background)); }
 .project-art { background: var(--surface); }
 .project-art-app { background: var(--secondary); }
 .project-art-calendar { background: var(--card); }
 .project-art-sat { background: color-mix(in oklab, var(--signal) 14%, var(--background)); }
 .project-art-robot { background: color-mix(in oklab, var(--primary) 12%, var(--background)); }
-@media (max-width: 767px) {
-  .hero-landscape { object-position: 74% bottom; opacity: 0.42; }
-  .hero-shade { background: linear-gradient(to bottom, var(--background) 4%, color-mix(in oklab, var(--background) 84%, transparent) 45%, var(--background) 100%); }
-}
 /* This portfolio intentionally has no animated or moving decoration. */
 a, button { transition: none !important; }
 @media (prefers-reduced-motion: reduce) {

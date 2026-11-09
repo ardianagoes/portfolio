@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowDown, ArrowUpRight, Github, Linkedin, Mail, FileText } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Github, Linkedin, FileText } from "lucide-react";
 import { experience, interests, links, projects, skills } from "@/components/portfolio/data";
 import { ProjectVisual } from "@/components/portfolio/ProjectVisual";
 import { PillLink, Section } from "@/components/portfolio/Section";
-import forestIslands from "@/assets/forest-islands.jpg";
+import { ContactForm } from "@/components/portfolio/ContactForm";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -35,9 +35,8 @@ function Index() {
       </header>
 
       <section id="top" className="relative overflow-hidden pb-8 pt-32 md:pb-10 md:pt-40">
-        <img src={forestIslands} alt="" width={1920} height={1024} className="hero-landscape absolute inset-0 h-full w-full object-cover" />
-        <div className="hero-shade absolute inset-0" aria-hidden="true" />
         <div className="relative mx-auto w-full max-w-5xl px-6">
+          <div aria-hidden="true" className="absolute right-6 top-1 hidden border-l border-border pl-4 font-mono text-xs leading-6 text-muted-foreground lg:block">01 / FIELD NOTES<br />Circuits ↔ code</div>
           <h1 className="max-w-3xl text-[42px] font-normal leading-[1.12] sm:text-6xl md:text-[68px]">I build things where<br className="hidden sm:block" /> hardware meets<br className="hidden sm:block" /> <em className="text-primary">software.</em></h1>
           <p className="mt-7 max-w-[540px] text-base leading-7 text-muted-foreground md:text-lg md:leading-8">
             <span className="text-foreground">I'm Ardian Agoes,</span> an Electrical Engineering student at Brown University. I enjoy building projects that connect circuits, code, and the physical world.
@@ -78,11 +77,8 @@ function Index() {
 
       <Section id="about" label="02 — About" title="Curious about how things work, down to the gate.">
         <div className="grid gap-8 text-lg leading-8 text-muted-foreground md:grid-cols-2">
-          <p>I'm an Electrical Engineering student at Brown University. I like projects where hardware and code meet — where a timing constraint, a noisy sensor, or a control loop decides whether something actually works.</p>
-          <div className="space-y-5">
-            <p>Lately I've been drawn to FPGAs, ASIC design, and semiconductors, especially systems where latency matters. Outside of class I build with embedded boards, robots, and the occasional app that solves a problem I have myself.</p>
-            <p className="text-base leading-7">Some of my friends call me <span className="font-display italic text-primary">Arduino.</span> Given how much time I spend around electronics, the nickname stuck.</p>
-          </div>
+          <p>I like figuring out why something works — or why it doesn't. A timing constraint, a noisy sensor, or a stubborn control loop is often where a project gets interesting.</p>
+          <p>Lately, I've been drawn to digital design and systems where latency matters. Outside of class, I build with embedded boards, robots, and the occasional app that solves a problem I have myself.</p>
         </div>
       </Section>
 
@@ -110,9 +106,9 @@ function Index() {
       </Section>
 
       <Section id="contact" label="05 — Contact" title="Let's build something.">
-        <div className="divide-y divide-border border-y border-border">
+        <ContactForm />
+        <div className="mt-8 grid gap-x-8 border-t border-border sm:grid-cols-2">
           {[
-            { icon: Mail, label: "Email", value: links.emailLabel, href: links.email },
             { icon: Github, label: "GitHub", value: "github.com/…", href: links.github },
             { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/…", href: links.linkedin },
           ].map(({ icon: Icon, label, value, href }) => (
