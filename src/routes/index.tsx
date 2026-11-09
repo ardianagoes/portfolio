@@ -34,11 +34,11 @@ function Index() {
         </div>
       </header>
 
-      <section id="top" className="relative flex min-h-[760px] items-center overflow-hidden pb-48 pt-32 md:min-h-[820px]">
+      <section id="top" className="relative flex min-h-[680px] items-center overflow-hidden pb-24 pt-32 md:min-h-[720px] md:pb-40">
         <img src={islandCoast} alt="" width={1920} height={1024} className="hero-landscape absolute inset-0 h-full w-full object-cover" />
         <div className="relative mx-auto w-full max-w-5xl px-6">
           <p className="mb-7 text-sm text-muted-foreground">Electrical Engineering · Brown University</p>
-          <h1 className="max-w-3xl text-5xl font-normal leading-[1.08] md:text-7xl">Hello, I’m Ardian. I like making hardware feel thoughtful.</h1>
+          <h1 className="max-w-3xl text-5xl font-normal leading-[1.08] md:text-7xl">Hello, I’m<br />Ardian Agoes.</h1>
           <p className="mt-8 max-w-xl text-lg leading-8 text-muted-foreground">
             I study electrical engineering and build things where circuits, code, and the physical world meet — sensors, robots, and fast digital systems.
           </p>

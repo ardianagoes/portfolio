@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Button } from "@/components/ui/button";
 
 export function Section({ id, label, title, children }: { id: string; label: string; title: string; children: ReactNode }) {
   return (
@@ -17,11 +18,8 @@ export function Section({ id, label, title, children }: { id: string; label: str
 export function PillLink({ href, children, primary }: { href: string; children: ReactNode; primary?: boolean }) {
   const ext = href.startsWith("http");
   return (
-    <a href={href} target={ext ? "_blank" : undefined} rel={ext ? "noreferrer" : undefined}
-      className={`inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-sm font-medium transition-colors ${
-        primary ? "bg-primary text-primary-foreground hover:bg-primary/90" : "text-foreground underline decoration-border underline-offset-4 hover:decoration-primary"
-      }`}>
-      {children}
-    </a>
+    <Button asChild variant={primary ? "default" : "link"} className={`min-h-11 rounded-full px-5 shadow-none ${primary ? "" : "text-foreground underline decoration-border underline-offset-4 hover:decoration-primary"}`}>
+      <a href={href} target={ext ? "_blank" : undefined} rel={ext ? "noreferrer" : undefined}>{children}</a>
+    </Button>
   );
 }
