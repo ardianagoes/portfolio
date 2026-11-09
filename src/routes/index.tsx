@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowDown, ArrowUpRight, Github, Linkedin, FileText } from "lucide-react";
-import { experience, interests, links, projects, skills } from "@/components/portfolio/data";
+import { education, experience, interests, links, projects, skills } from "@/components/portfolio/data";
 import { ProjectVisual } from "@/components/portfolio/ProjectVisual";
 import { PillLink, Section } from "@/components/portfolio/Section";
 import { ContactForm } from "@/components/portfolio/ContactForm";
@@ -9,9 +9,9 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Ardian Agoes — Electrical Engineering Portfolio" },
-      { name: "description", content: "Brown University EE student building FPGA, embedded, and robotics projects." },
+      { name: "description", content: "Ardian Agoes, Brown University Electrical Engineering student building environmental monitors, embedded prototypes, and robotics software." },
       { property: "og:title", content: "Ardian Agoes — Electrical Engineering Portfolio" },
-      { property: "og:description", content: "Brown University EE student building FPGA, embedded, and robotics projects." },
+      { property: "og:description", content: "Ardian Agoes, Brown University Electrical Engineering student building environmental monitors, embedded prototypes, and robotics software." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -47,7 +47,7 @@ function Index() {
             <PillLink href={links.linkedin}><Linkedin className="h-4 w-4" />LinkedIn</PillLink>
           </div>
           <div className="exploring-strip mt-12 border-t border-border py-6 md:mt-14">
-            <h2 className="mb-3 font-sans text-sm font-medium text-primary">Currently exploring</h2>
+            <h2 className="mb-3 font-sans text-sm font-medium text-primary">Technical interests · Exploring</h2>
             <ul className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm leading-6 text-foreground md:text-base">
               {interests.map((interest, index) => <li key={interest} className="flex items-center gap-3">{index > 0 && <span aria-hidden="true" className="text-primary">·</span>}{interest}</li>)}
             </ul>
@@ -69,6 +69,7 @@ function Index() {
                 <p className="mt-2 text-primary">{p.tagline}</p>
                 <p className="mt-5 leading-7 text-muted-foreground">{p.description}</p>
                 <p className="mt-5 text-sm text-muted-foreground">{p.tags.join(" · ")}</p>
+                {p.period && <p className="mt-2 text-sm text-muted-foreground">{p.period}</p>}
               </div>
               </Link>
             </article>
@@ -78,17 +79,18 @@ function Index() {
 
       <Section id="about" label="02 — About" title="Curious about how things work, down to the gate.">
         <div className="grid gap-8 text-lg leading-8 text-muted-foreground md:grid-cols-2">
-          <p>I like figuring out why something works — or why it doesn't. A timing constraint, a noisy sensor, or a stubborn control loop is often where a project gets interesting.</p>
+          <p>I like figuring out why something works — or why it doesn't. I've designed and assembled environmental monitors, programmed autonomous robots, and tested embedded prototypes.</p>
           <p>Lately, I've been drawn to digital design and systems where latency matters. Outside of class, I build with embedded boards, robots, and the occasional app that solves a problem I have myself.</p>
         </div>
+        <p className="mt-5 text-sm leading-7 text-muted-foreground">{education.university} · {education.degree} · Expected graduation {education.graduation}</p>
       </Section>
 
       <Section id="experience" label="03 — Experience" title="Experience & activities">
         <div className="divide-y divide-border border-y border-border">
           {experience.map((e) => (
-            <div key={e.org} className="grid gap-2 py-7 md:grid-cols-[1fr_1fr_auto] md:items-center">
+            <div key={e.org} className="grid gap-2 py-7 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] md:items-start">
               <h3 className="text-xl font-normal">{e.org}</h3>
-              <div><p>{e.role}</p><p className="text-sm text-muted-foreground">{e.note}</p></div>
+              <div><p>{e.role}</p><ul className="mt-2 list-disc space-y-2 pl-4 text-sm leading-6 text-muted-foreground">{e.notes.map((note) => <li key={note}>{note}</li>)}</ul></div>
               <span className="font-mono text-xs text-muted-foreground">{e.period}</span>
             </div>
           ))}
@@ -99,7 +101,7 @@ function Index() {
         <div className="grid gap-10 sm:grid-cols-2">
           {skills.map((s) => (
             <div key={s.group} className="border-t border-border pt-5">
-              <h3 className="mb-4 flex flex-wrap items-center justify-between gap-2 text-sm font-medium text-primary">{s.group}{s.confirmation === "pending" && <span className="text-xs font-normal text-muted-foreground">Pending confirmation</span>}</h3>
+              <h3 className="mb-4 flex flex-wrap items-center justify-between gap-2 text-sm font-medium text-primary">{s.group}</h3>
               <ul className="space-y-2 text-muted-foreground">{s.items.map((i) => <li key={i}>{i}</li>)}</ul>
             </div>
           ))}
@@ -111,7 +113,7 @@ function Index() {
         <div className="mt-8 grid gap-x-8 border-t border-border sm:grid-cols-2">
           {[
             { icon: Github, label: "GitHub", value: "github.com/ardianagoes", href: links.github },
-            { icon: Linkedin, label: "LinkedIn", value: "Profile pending", href: links.linkedin },
+            { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/ardianagoes/", href: links.linkedin },
           ].map(({ icon: Icon, label, value, href }) => (
             <a key={label} href={href} target={href?.startsWith("http") ? "_blank" : undefined} rel={href ? "noreferrer" : undefined} aria-disabled={!href || undefined}
               className="group flex min-h-20 items-center justify-between py-5">

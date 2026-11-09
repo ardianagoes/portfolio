@@ -1,5 +1,4 @@
-# Portfolio polish
-- [x] Update verified experience and GitHub; identify missing links and unconfirmed skills.
-- [x] Remove hero annotation without changing headline or introduction.
-- [x] Add accessible interactive projects and reusable detail pages with optional authentic content.
-- [x] Verify project navigation, keyboard access, mobile layout, contrast and existing contact behavior.
+# Verified resume content correction
+- [ ] Correct education, experience, project facts, skills and technical interests without redesigning.
+- [ ] Connect verified profile links; keep resume unavailable and contact disconnected.
+- [ ] Verify factual rules, all project pages, placeholders and desktop/mobile presentation.

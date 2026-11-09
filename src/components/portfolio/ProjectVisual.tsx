@@ -8,12 +8,19 @@ export function ProjectVisual({ kind }: { kind: Project["kind"] }) {
     calendar: ["DEADLINE DESK", "Time / priorities"],
     sat: ["FLATSAT", "Motion → capture"],
     robot: ["FIRST ROBOTICS", "Hardware ↔ software"],
+    alarm: ["SNOOZELESS", "Silent / tactile"],
   };
   return (
     <svg viewBox="0 0 400 225" className="h-full w-full text-primary" fill="none" aria-hidden="true">
       <text x="24" y="31" className="fill-current font-mono text-[11px]">{labels[kind][0]}</text>
       <path d="M24 43H376" className="stroke-current opacity-25" />
       <g stroke="currentColor" strokeWidth="1.5">
+        {kind === "alarm" && <>
+          <path d="M176 87V62h48v25m-48 67v25h48v-25" className="opacity-50" />
+          <rect x="164" y="87" width="72" height="67" rx="6" />
+          <circle cx="200" cy="120" r="14" /><path d="M200 111v10l7 4M236 107h5m-5 27h5" />
+          <path d="m151 109-5 6 5 6-5 6m103-18 5 6-5 6 5 6" className="opacity-50" />
+        </>}
         {kind === "sensor" && <>
           <circle cx="200" cy="118" r="26" /><circle cx="200" cy="118" r="4" className="fill-current" />
           <path d="M158 89a51 51 0 0 0 0 58M242 89a51 51 0 0 1 0 58M145 78a69 69 0 0 0 0 80M255 78a69 69 0 0 1 0 80" className="opacity-40" />
