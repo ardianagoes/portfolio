@@ -26,6 +26,7 @@ export function ProjectDetail({ project }: { project: Project }) {
           <p className="mb-3 text-sm text-muted-foreground">Selected work / {project.id}</p>
           <h1 className="break-words text-4xl leading-tight md:text-6xl">{project.title}</h1>
           <p className="mt-5 text-lg text-primary">{project.tagline}</p>
+          {project.period && <p className="mt-2 text-sm text-muted-foreground">{project.period}</p>}
           <div className={`project-art project-art-${project.kind} mt-8 aspect-[16/9] max-w-2xl overflow-hidden rounded-md`}>
             <ProjectVisual kind={project.kind} />
           </div>
