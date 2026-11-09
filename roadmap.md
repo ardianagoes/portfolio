@@ -1,4 +1,4 @@
 # Homepage refinement
-- [x] Replace futuristic hero with a quiet island-inspired composition.
-- [x] Simplify typography, navigation, project cards, and section styling while preserving content.
-- [x] Check desktop and mobile layouts and navigation.
+- [ ] Refine headline, introduction, wordmark, exploring interests and About nickname without changing existing project facts.
+- [ ] Apply dark forest palette and subdued Indonesian landscape artwork; tighten editorial spacing.
+- [ ] Verify desktop/mobile readability and section navigation.
