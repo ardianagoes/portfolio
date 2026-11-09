@@ -7,7 +7,7 @@ export const links = {
   resume: "#",
 };
 
-export const interests = ["FPGA", "ASICs", "Semiconductors", "Embedded Systems", "Low-Latency Hardware", "Robotics"];
+export const interests = ["FPGA", "ASIC design", "Semiconductors", "Embedded systems", "Low-latency computing"];
 
 export type Project = { id: string; title: string; tagline: string; description: string; tags: string[]; kind: "sensor" | "app" | "calendar" | "sat" | "robot" };
 

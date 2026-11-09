@@ -3,7 +3,7 @@ import { ArrowDown, ArrowUpRight, Github, Linkedin, Mail, FileText } from "lucid
 import { experience, interests, links, projects, skills } from "@/components/portfolio/data";
 import { ProjectVisual } from "@/components/portfolio/ProjectVisual";
 import { PillLink, Section } from "@/components/portfolio/Section";
-import islandCoast from "@/assets/island-coast.jpg";
+import forestIslands from "@/assets/forest-islands.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -26,7 +26,7 @@ function Index() {
     <div className="min-h-screen">
       <header className="absolute inset-x-0 top-0 z-20">
         <div className="mx-auto flex h-20 max-w-5xl items-center justify-between px-6">
-          <a href="#top" className="font-display text-lg">Ardian Agoes</a>
+          <a href="#top" aria-label="Ardian Agoes — home" className="font-display text-2xl">ardian.</a>
           <nav aria-label="Main navigation" className="hidden gap-7 text-sm text-muted-foreground md:flex">
             {nav.map(([l, h]) => <a key={h} href={h} className="hover:text-foreground">{l}</a>)}
           </nav>
@@ -34,28 +34,33 @@ function Index() {
         </div>
       </header>
 
-      <section id="top" className="relative flex min-h-[640px] items-center overflow-hidden pb-12 pt-28 md:min-h-[720px] md:pb-40 md:pt-32">
-        <img src={islandCoast} alt="" width={1920} height={1024} className="hero-landscape absolute inset-0 h-full w-full object-cover" />
+      <section id="top" className="relative overflow-hidden pb-8 pt-32 md:pb-10 md:pt-40">
+        <img src={forestIslands} alt="" width={1920} height={1024} className="hero-landscape absolute inset-0 h-full w-full object-cover" />
+        <div className="hero-shade absolute inset-0" aria-hidden="true" />
         <div className="relative mx-auto w-full max-w-5xl px-6">
-          <p className="mb-7 text-sm text-muted-foreground">Electrical Engineering · Brown University</p>
-          <h1 className="max-w-3xl text-5xl font-normal leading-[1.08] md:text-7xl">Hello, I’m<br />Ardian Agoes.</h1>
-          <p className="mt-8 max-w-xl text-base leading-7 text-muted-foreground md:text-lg md:leading-8">
-            I study electrical engineering and build things where circuits, code, and the physical world meet — sensors, robots, and fast digital systems.
+          <h1 className="max-w-3xl text-[42px] font-normal leading-[1.12] sm:text-6xl md:text-[68px]">I build things where<br className="hidden sm:block" /> hardware meets<br className="hidden sm:block" /> <em className="text-primary">software.</em></h1>
+          <p className="mt-7 max-w-[540px] text-base leading-7 text-muted-foreground md:text-lg md:leading-8">
+            <span className="text-foreground">I'm Ardian Agoes,</span> an Electrical Engineering student at Brown University. I enjoy building projects that connect circuits, code, and the physical world.
           </p>
-          <div className="mt-10 flex flex-wrap items-center gap-x-2 gap-y-3">
+          <div className="mt-7 flex flex-wrap items-center gap-x-2 gap-y-3">
             <PillLink href="#projects" primary>See my work <ArrowDown className="h-4 w-4" /></PillLink>
             <PillLink href={links.resume}><FileText className="h-4 w-4" />Resume</PillLink>
             <PillLink href={links.github}><Github className="h-4 w-4" />GitHub</PillLink>
             <PillLink href={links.linkedin}><Linkedin className="h-4 w-4" />LinkedIn</PillLink>
           </div>
-          <p className="mt-10 max-w-xl text-sm leading-7 text-muted-foreground md:mt-16">Currently curious about {interests.join(", ").replace(/, ([^,]*)$/, ", and $1")}.</p>
+          <div className="exploring-strip mt-12 border-t border-border py-6 md:mt-14">
+            <h2 className="mb-3 font-sans text-sm font-medium text-primary">Currently exploring</h2>
+            <ul className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm leading-6 text-foreground md:text-base">
+              {interests.map((interest, index) => <li key={interest} className="flex items-center gap-3">{index > 0 && <span aria-hidden="true" className="text-primary">·</span>}{interest}</li>)}
+            </ul>
+          </div>
         </div>
       </section>
 
       <Section id="projects" label="Selected work" title="Projects I’ve been building">
-        <div className="space-y-16">
+        <div className="space-y-10">
           {projects.map((p) => (
-            <article key={p.id} className="grid gap-6 border-t border-border pt-8 md:grid-cols-[1fr_1.15fr] md:items-start">
+            <article key={p.id} className="grid gap-6 border-t border-border pt-7 md:grid-cols-[1fr_1.15fr] md:items-start">
               <div className={`project-art project-art-${p.kind} aspect-[16/9] overflow-hidden rounded-md`}>
                 <ProjectVisual kind={p.kind} />
               </div>
@@ -74,7 +79,10 @@ function Index() {
       <Section id="about" label="02 — About" title="Curious about how things work, down to the gate.">
         <div className="grid gap-8 text-lg leading-8 text-muted-foreground md:grid-cols-2">
           <p>I'm an Electrical Engineering student at Brown University. I like projects where hardware and code meet — where a timing constraint, a noisy sensor, or a control loop decides whether something actually works.</p>
-          <p>Lately I've been drawn to FPGAs, ASIC design, and semiconductors, especially systems where latency matters. Outside of class I build with embedded boards, robots, and the occasional app that solves a problem I have myself.</p>
+          <div className="space-y-5">
+            <p>Lately I've been drawn to FPGAs, ASIC design, and semiconductors, especially systems where latency matters. Outside of class I build with embedded boards, robots, and the occasional app that solves a problem I have myself.</p>
+            <p className="text-base leading-7">Some of my friends call me <span className="font-display italic text-primary">Arduino.</span> Given how much time I spend around electronics, the nickname stuck.</p>
+          </div>
         </div>
       </Section>
 
