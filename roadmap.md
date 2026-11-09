@@ -1,6 +1,5 @@
-# Targeted portfolio improvements
-- [x] Remove hero photography while preserving headline, palette, exploring interests and navigation.
-- [x] Replace landscape placeholders with distinct symbolic project studies.
-- [x] Tighten About copy and remove nickname.
-- [x] Add accessible contact form UI without connecting services or implying delivery.
-- [x] Verify validation, desktop/mobile layout and navigation.
+# Portfolio polish
+- [ ] Update verified experience and GitHub; identify missing links and unconfirmed skills.
+- [ ] Remove hero annotation without changing headline or introduction.
+- [ ] Add accessible interactive projects and reusable detail pages with optional authentic content.
+- [ ] Verify project navigation, keyboard access, mobile layout, contrast and existing contact behavior.
