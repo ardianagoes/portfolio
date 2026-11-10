@@ -1,20 +1,39 @@
 # Engineering Portfolio
 
-My personal engineering portfolio, built to showcase projects in embedded systems, robotics, hardware development, and software engineering.
+Ardian Agoes's personal engineering portfolio. I am an Electrical Engineering student at Brown University, with an expected graduation date of May 2030.
 
-**[View Live Website](https://portfolio-umber-seven-96.vercel.app/)** | **[GitHub Profile](https://github.com/ardianagoes)** | **[LinkedIn](https://www.linkedin.com/in/ardianagoes/)**
+[View the live portfolio](https://ardianagoes.vercel.app/)
 
 ## Overview
 
-I'm Ardian Agoes, an Electrical Engineering student at Brown University (Sc.B. 2030).
+The site presents my work in embedded systems, environmental monitoring, robotics, and software development. Featured projects include O2NYC, Furney, Deadline Desk, CubeSat FlatSat, FIRST Robotics, and Snoozeless. Each has a dedicated page with the project information currently available.
 
-This portfolio documents projects I've worked on, the technologies behind them, and the engineering challenges I've explored. My interests include FPGA and ASIC design, computer architecture, embedded systems, semiconductors, and low-latency computing.
+My interests also include digital hardware, semiconductors, and low-latency computing. The portfolio distinguishes these interests from the technologies I have used in projects.
 
-The website is designed around a minimal, editorial aesthetic with an emphasis on readability, accessibility, and straightforward navigation.
+The application uses React, TypeScript, TanStack Start and Router, Tailwind CSS, Vite, and Nitro. Tests use Vitest and Testing Library. Project content is maintained in `src/components/portfolio/data.ts`, with reusable presentation components alongside it.
 
-## Featured Projects
+## Local development
 
-| Project | Description |
-|---|---|
-| **O2NYC** | Designed and assembled 15+ low-cost air-quality monitors using NodeMCU, BME280, and particulate sensors, reducing per-unit hardware costs by over 80%. |
-| **Furney** | AI-powered furniture discovery
+Install Git, Node.js 22.12+ with npm, and Bun. Use the committed lockfile:
+
+```sh
+git clone https://github.com/ardianagoes/portfolio.git
+cd portfolio
+bun install --frozen-lockfile
+bun run dev
+```
+
+Open the URL printed by Vite. To test and preview a production build:
+
+```sh
+bun run test
+bunx tsc --noEmit
+bun run build
+bun run preview
+```
+
+## Deployment and status
+
+Production runs on Vercel Hobby. The project originated in Lovable and is maintained through GitHub and Codex. The default local build uses a Cloudflare module fallback; preview runs it locally through Wrangler, without deploying.
+
+Portfolio content requires no paid API or credentials. Email delivery is disabled, and the résumé download is pending. See the [security review](docs/security-review.md) for findings and production settings that require owner verification.

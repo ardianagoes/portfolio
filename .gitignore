@@ -16,9 +16,17 @@ dist-ssr
 .nitro
 *.local
 
+# Local credentials, deployment state, and test output
+.env
+.env.*
+!.env.example
+.vercel/
+coverage/
+
 # Wrangler / Cloudflare
 .wrangler/
 .dev.vars
+.dev.vars.*
 
 # Editor directories and files
 .vscode/*
