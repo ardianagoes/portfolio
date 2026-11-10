@@ -76,11 +76,69 @@ Continue developing this project in the [Lovable editor](https://lovable.dev/pro
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Use Node.js 22.12 or newer (Node.js 24 was tested), npm, and Bun. Install the
+application dependencies from the committed Bun lockfile:
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+git clone https://github.com/ardianagoes/portfolio.git
+cd portfolio
+bun install --frozen-lockfile
 npm run dev
 ```
+
+Open the local URL printed by Vite. This development server includes hot reload
+and uses the existing Lovable Vite configuration. If Bun is not installed, run
+`npm exec --yes --package=bun@1.4.4 -- bun install --frozen-lockfile` instead of the
+`bun install` command above. Do not generate a competing npm lockfile.
+
+### Test and preview the production build
+
+```sh
+npm test
+node node_modules/typescript/bin/tsc --noEmit
+npm run build
+npm run preview
+```
+
+Open [http://127.0.0.1:8787](http://127.0.0.1:8787). To use a different port:
+
+```sh
+npm run preview -- --port 4173
+```
+
+The build uses the existing Lovable/TanStack Start/Nitro integration and its
+`cloudflare-module` target. Nitro generates the worker under `.output/server`,
+static assets under `.output/public`, and the preview configuration at
+`.output/server/wrangler.json`. Build before previewing, and rebuild after source
+changes; preview serves the compiled application, not the Vite development server.
+Do not edit or commit the generated output or Wrangler configuration.
+
+`npm run preview` runs a pinned version of Cloudflare's Wrangler CLI through npx.
+Its first run downloads the CLI and local Workers runtime into npm's cache and
+requires network access. It adds no project dependency or lockfile. The worker
+and its generated asset binding run locally, bind to `127.0.0.1`, and require no
+Cloudflare login or deployment. Stop the server with Ctrl+C. Local preview does
+not verify production account configuration or remote service bindings.
+
+Plain `vite preview` is not supported by this build: TanStack's generic preview
+handler looks for `dist/server/server.js`, while Nitro emits the Cloudflare
+worker elsewhere. Use the package preview script so Wrangler loads the generated
+worker, compatibility settings, and assets together. See Cloudflare's
+[Wrangler local development documentation](https://developers.cloudflare.com/workers/wrangler/commands/workers/#dev).
+
+With preview running, smoke-test:
+
+- `/` and `/projects/01` through `/projects/06`: HTTP 200, correct page titles,
+  project content, and working project/back links.
+- `/projects/missing` and `/missing`: HTTP 404 with the existing not-found page.
+- `/robots.txt`, `/favicon.ico`, and the `/assets/` CSS/JavaScript URLs referenced
+  by the page: HTTP 200 with the correct content types.
+- The contact form: validation still works, and unconfigured delivery never
+  claims that a message was sent.
+
+### Lovable synchronization
+
+Keep the existing `vite.config.ts` integration and build target. Work on a branch
+and open a pull request into `main`; merge only after review. Changes merged into
+the connected branch sync back to Lovable. Do not rewrite published Git history,
+and follow `AGENTS.md` for generated files and Lovable-managed resources.
