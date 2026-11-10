@@ -4,6 +4,7 @@ import { education, experience, interests, links, projects, skills } from "@/com
 import { ProjectVisual } from "@/components/portfolio/ProjectVisual";
 import { PillLink, Section } from "@/components/portfolio/Section";
 import { ContactForm } from "@/components/portfolio/ContactForm";
+import { SectionNavigation } from "@/components/portfolio/SectionNavigation";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,6 +25,7 @@ const nav = [["Projects", "#projects"], ["About", "#about"], ["Experience", "#ex
 function Index() {
   return (
     <div className="min-h-screen">
+      <SectionNavigation />
       <header className="absolute inset-x-0 top-0 z-20">
         <div className="mx-auto flex h-20 max-w-5xl items-center justify-between px-6">
           <a href="#top" aria-label="Ardian Agoes — home" className="font-display text-2xl">ardian.</a>
