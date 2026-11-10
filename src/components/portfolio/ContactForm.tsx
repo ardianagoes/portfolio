@@ -54,7 +54,7 @@ export function ContactForm({ onSend }: { onSend?: (values: ContactValues) => Pr
   }
 
   return (
-    <form ref={formRef} noValidate onSubmit={submit} aria-label="Contact form" aria-busy={status === "sending"} className="space-y-6">
+    <form ref={formRef} method="post" noValidate onSubmit={submit} aria-label="Contact form" aria-busy={status === "sending"} className="space-y-6">
       <div className="grid gap-6 sm:grid-cols-2">
         <div className="space-y-3">
           <Label htmlFor="contact-name">Name <span className="text-muted-foreground">(required)</span></Label>
