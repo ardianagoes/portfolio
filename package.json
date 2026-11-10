@@ -11,6 +11,7 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "test": "vitest run",
+    "test:contact:runtime": "npm exec --yes --package=wrangler@4.159.0 -- node scripts/test-contact-runtime.mjs",
     "test:watch": "vitest"
   },
   "overrides": {

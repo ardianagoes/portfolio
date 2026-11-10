@@ -76,6 +76,10 @@ Continue developing this project in the [Lovable editor](https://lovable.dev/pro
 
 ## Development
 
+Contact delivery setup and its required hosting secrets/binding are documented in
+[CONTACT_DELIVERY.md](./CONTACT_DELIVERY.md). Email delivery remains unavailable
+until Resend, Turnstile, the domain, and runtime configuration are activated.
+
 Use Node.js 22.12 or newer (Node.js 24 was tested), npm, and Bun. Install the
 application dependencies from the committed Bun lockfile:
 

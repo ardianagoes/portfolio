@@ -1,0 +1,16 @@
+{
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "CONTACT_RATE_LIMITER",
+        "class_name": "ContactRateLimiter"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "contact-rate-limiter-v1",
+      "new_sqlite_classes": ["ContactRateLimiter"]
+    }
+  ]
+}
