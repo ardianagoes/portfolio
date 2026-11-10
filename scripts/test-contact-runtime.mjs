@@ -10,6 +10,20 @@ const miniflarePath = require.resolve("miniflare", { paths });
 const { Miniflare, Log, LogLevel, convertV4MiniflareOptions } = await import(
   pathToFileURL(miniflarePath)
 );
+const generated = JSON.parse(await readFile(".output/server/wrangler.json", "utf8"));
+const buildInfo = JSON.parse(await readFile(".output/nitro.json", "utf8"));
+assert.equal(buildInfo.preset, "cloudflare-module");
+assert.ok(
+  generated.durable_objects?.bindings?.some(
+    (binding) =>
+      binding.name === "CONTACT_RATE_LIMITER" && binding.class_name === "ContactRateLimiter",
+  ),
+);
+assert.ok(
+  generated.migrations?.some((migration) =>
+    migration.new_sqlite_classes?.includes("ContactRateLimiter"),
+  ),
+);
 const bindings = {
   RESEND_API_KEY: "runtime-smoke-secret-resend-canary",
   CONTACT_TO_EMAIL: "private-runtime-canary@example.com",
@@ -36,8 +50,8 @@ const options = {
     ),
   ].map((p) => ({ type: "ESModule", path: resolve(".output/server", p) })),
 
-  compatibilityDate: "2026-11-06",
-  compatibilityFlags: ["nodejs_compat"],
+  compatibilityDate: generated.compatibility_date,
+  compatibilityFlags: generated.compatibility_flags,
   durableObjects: { CONTACT_RATE_LIMITER: { className: "ContactRateLimiter", useSQLite: true } },
   assets: {
     directory: resolve(".output/public"),
